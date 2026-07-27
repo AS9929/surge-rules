@@ -1,20 +1,11 @@
 # surge-rules
 
-Self-hosted Surge / Surfboard RULE-SET lists.
-
-**Daily updates** run from private infra (`AS9929/vps-infra` → publish).
-This public repo keeps a manual **Daily Sync Upstream** fallback.
-
-Hand-tuned rules: `owned/` (synced on each publish).
-
-## Subscribe
+Self-hosted Surge RULE-SET lists. Daily sync from private `AS9929/surge-rulesets`.
 
 Base: `https://raw.githubusercontent.com/AS9929/surge-rules/main/<path>`
 
-Custom lists: `custom/`.
-
-| File | Purpose | Typical policy |
-|------|---------|----------------|
+| File | Purpose | Policy |
+|------|---------|--------|
 | `custom/direct.list` | `自定义直连` | `DIRECT` |
 | `custom/proxies.list` | `自定义代理` | `Proxies` |
 | `custom/japan.list` | `自定义日本（Nodeseek）` | `日本` |
@@ -38,17 +29,4 @@ Custom lists: `custom/`.
 | `china.list` | `China DIRECT` | `DIRECT` |
 | `global.list` | `Global Proxy` | `Proxies` |
 
-### Surge example
-
-```ini
-RULE-SET,https://raw.githubusercontent.com/AS9929/surge-rules/main/reject.list,REJECT,"update-interval=86400",pre-matching
-RULE-SET,https://raw.githubusercontent.com/AS9929/surge-rules/main/claude.list,Claude,"update-interval=86400",extended-matching
-RULE-SET,https://raw.githubusercontent.com/AS9929/surge-rules/main/chatgpt.list,Chatgpt,"update-interval=86400",extended-matching
-RULE-SET,https://raw.githubusercontent.com/AS9929/surge-rules/main/custom/direct.list,DIRECT,"update-interval=86400",extended-matching
-```
-
 jsDelivr: `https://cdn.jsdelivr.net/gh/AS9929/surge-rules@main/<path>`
-
-## License
-
-Aggregated from public community sources plus local owned rules. Use at your own risk.
