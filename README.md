@@ -12,11 +12,10 @@ Base: `https://raw.githubusercontent.com/AS9929/surge-rules/main/<name>.list`
 |------|---------|----------------|
 | `custom-direct.list` | `自定义直连` | `DIRECT` |
 | `custom-proxies.list` | `自定义代理` | `Proxies` |
-| `custom-japan.list` | `自定义日本（Perplexity / Nodeseek）` | `日本` |
+| `custom-japan.list` | `自定义日本（Nodeseek）` | `日本` |
 | `custom-reject.list` | `自定义拒绝` | `REJECT` |
 | `custom-reject-nodrop.list` | `自定义 REJECT-NO-DROP（QUIC / TG 转圈）` | `REJECT-NO-DROP` |
 | `custom-no-hybrid.list` | `NO-HYBRID（招行等）` | `NO-HYBRID` |
-| `download-direct.list` | `下载器直连` | `DIRECT` |
 | `ext-update.list` | `外部资源更新提示` | `Final` |
 | `reject.list` | `AdBlock / reject` | `REJECT` |
 | `claude.list` | `Claude / Anthropic` | `Claude` |
