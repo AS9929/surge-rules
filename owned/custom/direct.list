@@ -1,0 +1,16 @@
+# OWNED — 直连（基础设施 + 必要特例）
+# Komari / DNS
+IP-CIDR,154.39.65.108/32,no-resolve
+DOMAIN,monitor.bgp.best
+# Surge Ponte
+DOMAIN-SUFFIX,sgponte
+# 电信 ASN 优先直连（减少误走代理）
+IP-ASN,4134,no-resolve
+# 微信 mmtls
+URL-REGEX,mmtls
+# Apple Maps / Store Online
+DOMAIN-SUFFIX,ls.apple.com
+DOMAIN-SUFFIX,store.apple.com
+# 常见下载器（macOS）
+PROCESS-NAME,aria2c
+PROCESS-NAME,Transmission

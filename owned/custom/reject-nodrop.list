@@ -1,0 +1,5 @@
+# OWNED — REJECT-NO-DROP（立刻回退，不靠丢包等待）
+# TG 加载转圈
+IP-CIDR,95.161.76.100/31,no-resolve
+# 屏蔽 QUIC / HTTP3 UDP:443
+AND,((PROTOCOL,UDP),(DEST-PORT,443))

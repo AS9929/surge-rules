@@ -1,0 +1,241 @@
+# Surge RULE-SET 自托管配置
+# 公开仓：https://github.com/AS9929/surge-rules
+
+base_url: https://raw.githubusercontent.com/AS9929/surge-rules/main
+
+denylist:
+  - storage.googleapis.com
+  - challenges.cloudflare.com
+  - stripe.com
+  - sentry.io
+  - auth0.com
+  - segment.io
+  - intercom.io
+  - intercomcdn.com
+  - algolia.net
+  - identrust.com
+  - observeit.net
+  - datadoghq.com
+  - api.github.com
+  - static.cloudflareinsights.com
+
+# apply 后 [Rule] 段末尾（无法/不宜放进 RULE-SET 的内置规则）
+footer:
+  surge: |
+    IP-CIDR,0.0.0.0/32,REJECT,no-resolve
+    # Local Area Network & GeoIP China
+    OR,((RULE-SET,SYSTEM), (RULE-SET,LAN), (GEOIP,CN)),DIRECT
+    FINAL,Final,dns-failed
+  surfboard: |
+    IP-CIDR,0.0.0.0/32,REJECT,no-resolve
+    IP-CIDR,192.168.0.0/16,DIRECT
+    IP-CIDR,10.0.0.0/8,DIRECT
+    IP-CIDR,172.16.0.0/12,DIRECT
+    IP-CIDR,127.0.0.0/8,DIRECT
+    IP-CIDR,100.64.0.0/10,DIRECT
+    GEOIP,CN,DIRECT
+    FINAL,Final
+
+# 顺序 = 匹配优先级。自定义规则必须在 reject/china/global 之前。
+rulesets:
+  # ---------- 原 conf 内联自定义（按策略拆分，成品在 custom/）----------
+  - id: custom-direct
+    path: custom/direct.list
+    comment: 自定义直连
+    policy: DIRECT
+    matching: extended-matching
+    apply_denylist: false
+    upstream: []
+
+  - id: custom-proxies
+    path: custom/proxies.list
+    comment: 自定义代理
+    policy: Proxies
+    matching: extended-matching
+    apply_denylist: false
+    upstream: []
+
+  - id: custom-japan
+    path: custom/japan.list
+    comment: 自定义日本（Nodeseek）
+    policy: 日本
+    matching: extended-matching
+    apply_denylist: false
+    upstream: []
+
+  - id: custom-reject
+    path: custom/reject.list
+    comment: 自定义拒绝
+    policy: REJECT
+    matching: extended-matching
+    apply_denylist: false
+    upstream: []
+
+  - id: custom-reject-nodrop
+    path: custom/reject-nodrop.list
+    comment: 自定义 REJECT-NO-DROP（QUIC / TG 转圈）
+    policy: REJECT-NO-DROP
+    policy_surfboard: REJECT
+    matching: extended-matching
+    apply_denylist: false
+    upstream: []
+
+  - id: custom-no-hybrid
+    path: custom/no-hybrid.list
+    comment: NO-HYBRID（招行等）
+    policy: NO-HYBRID
+    # Surfboard 无此策略，降级直连
+    policy_surfboard: DIRECT
+    matching: extended-matching
+    apply_denylist: false
+    upstream: []
+
+  - id: ext-update
+    path: custom/ext-update.list
+    comment: 外部资源更新提示
+    policy: Final
+    matching: extended-matching
+    apply_denylist: false
+    surge_options: 'notification-text="♻️External Resources Update",notification-interval=3600'
+    upstream: []
+
+  # ---------- 原第三方 RULE-SET ----------
+  - id: reject
+    comment: AdBlock / reject
+    policy: REJECT
+    policy_surfboard: AdBlock
+    matching: pre-matching
+    apply_denylist: false
+    upstream:
+      - https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/ruleset/reject.txt
+
+  - id: claude
+    comment: Claude / Anthropic
+    policy: Claude
+    matching: extended-matching
+    apply_denylist: true
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Claude/Claude.list
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Anthropic/Anthropic.list
+      - https://raw.githubusercontent.com/xiaolai/anthropic-claude-surge-rules-set/main/dist/anthropic.list
+
+  - id: chatgpt
+    comment: ChatGPT / OpenAI
+    policy: Chatgpt
+    matching: extended-matching
+    apply_denylist: true
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/OpenAI/OpenAI.list
+      - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Copilot/Copilot.list
+
+  - id: gemini
+    comment: Gemini
+    policy: Gemini
+    matching: extended-matching
+    apply_denylist: true
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Gemini/Gemini.list
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/BardAI/BardAI.list
+
+  - id: ai-misc
+    comment: 其它 AI 兜底
+    policy: Proxies
+    matching: extended-matching
+    apply_denylist: true
+    skip_keywords:
+      - anthropic
+      - claude
+      - openai
+      - chatgpt
+      - oaiusercontent
+      - oaistatic
+      - sora.com
+      - gemini.google
+      - bard.google
+      - generativelanguage
+      - notebooklm
+      - aistudio.google
+      - deepmind
+    upstream:
+      - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list
+
+  - id: youtube
+    comment: YouTube
+    policy: Youtube
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://rawstatic.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
+
+  - id: netflix
+    comment: Netflix
+    policy: Netflix
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Netflix/Netflix.list
+
+  - id: truthsocial
+    comment: Truth Social
+    policy: TruthSocial
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/TruthSocial/TruthSocial.list
+
+  - id: whatsapp
+    comment: WhatsApp
+    policy: Whatsapp
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Whatsapp/Whatsapp.list
+
+  - id: twitter
+    comment: Twitter / X
+    policy: Twitter
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Twitter/Twitter.list
+
+  - id: telegram
+    comment: Telegram
+    policy: Telegram
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Telegram/Telegram.list
+
+  - id: bahamut
+    comment: Bahamut
+    policy: Bahamut
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://rawstatic.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bahamut.list
+
+  - id: apple
+    comment: Apple
+    policy: Apple
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Apple/Apple.list
+
+  - id: china
+    comment: China DIRECT
+    policy: DIRECT
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/China/China.list
+
+  - id: global
+    comment: Global Proxy
+    policy: Proxies
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Global/Global.list

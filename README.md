@@ -2,13 +2,14 @@
 
 Self-hosted Surge / Surfboard RULE-SET lists.
 
-Maintained from private infra via `sync-rulesets.py` / `publish-rulesets.sh`.
+Upstream sources are merged daily by GitHub Actions (`Daily Sync Upstream`).
+Hand-tuned rules live in `owned/` (copied from private infra on publish).
 
 ## Subscribe
 
 Base: `https://raw.githubusercontent.com/AS9929/surge-rules/main/<path>`
 
-Custom (hand-tuned) lists live under `custom/`.
+Custom lists: `custom/`.
 
 | File | Purpose | Typical policy |
 |------|---------|----------------|
@@ -42,10 +43,15 @@ RULE-SET,https://raw.githubusercontent.com/AS9929/surge-rules/main/reject.list,R
 RULE-SET,https://raw.githubusercontent.com/AS9929/surge-rules/main/claude.list,Claude,"update-interval=86400",extended-matching
 RULE-SET,https://raw.githubusercontent.com/AS9929/surge-rules/main/chatgpt.list,Chatgpt,"update-interval=86400",extended-matching
 RULE-SET,https://raw.githubusercontent.com/AS9929/surge-rules/main/custom/direct.list,DIRECT,"update-interval=86400",extended-matching
-# ... see blankmagic.conf managed-rulesets block
 ```
 
 jsDelivr: `https://cdn.jsdelivr.net/gh/AS9929/surge-rules@main/<path>`
+
+## Daily sync
+
+Workflow: `.github/workflows/daily-sync.yml` — every day 00:00 CST.
+
+Manual: Actions → **Daily Sync Upstream** → Run workflow.
 
 ## License
 

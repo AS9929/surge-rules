@@ -1,0 +1,48 @@
+name: Daily Sync Upstream
+
+# 跑在公开仓 AS9929/surge-rules：拉黑名单/AI 等上游，合并 owned，回写 *.list
+# 由私有仓 publish-rulesets.sh 同步本文件；勿只在公开仓改。
+
+on:
+  schedule:
+    # 每天 00:00 CST（UTC 16:00）
+    - cron: "0 16 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: daily-sync-upstream
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Fetch upstream & merge owned
+        run: python3 sync-rulesets.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "AS9929"
+          git config user.email "noreply@github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "无变更"
+          else
+            git commit -m "chore: sync Surge rulesets $(date -u +%Y-%m-%d)"
+            git push
+          fi

@@ -1,0 +1,6 @@
+# OWNED — 手工维护，sync-rulesets 不会覆盖本文件
+
+DOMAIN,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,notebooklm.google
+DOMAIN-SUFFIX,notebooklm.google.com
+DOMAIN-SUFFIX,aistudio.google.com

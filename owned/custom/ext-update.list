@@ -1,0 +1,2 @@
+# OWNED — 外部资源更新提示（策略 Final + conf 上 notification 参数）
+OR,((DOMAIN,raw.githubusercontent.com),(DOMAIN-SUFFIX,github.io))
