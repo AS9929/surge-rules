@@ -1,0 +1,26 @@
+# claude.list — 自托管 Surge RULE-SET
+# Generated: 2026-07-27 08:52 UTC
+# Owned: configs/rulesets/owned/claude.list
+# Do not edit the GENERATED section by hand; re-run sync-rulesets.py
+
+# ===== OWNED =====
+PROCESS-NAME,Claude
+PROCESS-NAME,Claude Helper
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,modelcontextprotocol.io
+DOMAIN,downloads.claude.ai
+DOMAIN,cdn.growthbook.io
+DOMAIN,cdn.usefathom.com
+DOMAIN,servd-anthropic-website.b-cdn.net
+DOMAIN-KEYWORD,anthropic
+IP-CIDR,160.79.104.0/21,no-resolve
+IP-CIDR6,2607:6bc0::/48,no-resolve
+IP-ASN,399358,no-resolve
+
+# ===== GENERATED (from upstream, denylist applied) =====
+IP-CIDR,160.79.104.0/23,no-resolve
+

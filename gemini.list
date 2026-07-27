@@ -1,0 +1,26 @@
+# gemini.list — 自托管 Surge RULE-SET
+# Generated: 2026-07-27 08:52 UTC
+# Owned: configs/rulesets/owned/gemini.list
+# Do not edit the GENERATED section by hand; re-run sync-rulesets.py
+
+# ===== OWNED =====
+DOMAIN,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,notebooklm.google
+DOMAIN-SUFFIX,notebooklm.google.com
+DOMAIN-SUFFIX,aistudio.google.com
+
+# ===== GENERATED (from upstream, denylist applied) =====
+DOMAIN,ai.google.dev
+DOMAIN,alkalimakersuite-pa.clients6.google.com
+DOMAIN,makersuite.google.com
+DOMAIN-SUFFIX,bard.google.com
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,generativeai.google
+DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
+DOMAIN-SUFFIX,apis.google.com
+DOMAIN-KEYWORD,colab
+DOMAIN-KEYWORD,developerprofiles
+DOMAIN-KEYWORD,generativelanguage
+

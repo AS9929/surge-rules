@@ -1,0 +1,41 @@
+# ai-misc.list — 自托管 Surge RULE-SET
+# Generated: 2026-07-27 08:52 UTC
+# Owned: configs/rulesets/owned/ai-misc.list
+# Do not edit the GENERATED section by hand; re-run sync-rulesets.py
+
+# ===== OWNED =====
+DOMAIN-SUFFIX,cursor.com
+DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,cursorapi.com
+DOMAIN-SUFFIX,groq.com
+DOMAIN-SUFFIX,openrouter.ai
+DOMAIN-SUFFIX,x.ai
+DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,mistral.ai
+DOMAIN-SUFFIX,meta.ai
+DOMAIN-SUFFIX,together.ai
+DOMAIN-SUFFIX,together.xyz
+DOMAIN-SUFFIX,fireworks.ai
+DOMAIN-SUFFIX,huggingface.co
+
+# ===== GENERATED (from upstream, denylist applied) =====
+DOMAIN,ai.google.dev
+DOMAIN,api.githubcopilot.com
+DOMAIN,api.groq.com
+DOMAIN,api.together.xyz
+DOMAIN,console.groq.com
+DOMAIN,copilot-proxy.githubusercontent.com
+DOMAIN,sydney.bing.com
+DOMAIN-SUFFIX,ai.azure.com
+DOMAIN-SUFFIX,client-api.arkoselabs.com
+DOMAIN-SUFFIX,copilot.cloud.microsoft
+DOMAIN-SUFFIX,copilot.microsoft.com
+DOMAIN-SUFFIX,events.statsigapi.net
+DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,grazie.ai
+DOMAIN-SUFFIX,grazie.aws.intellij.net
+DOMAIN-SUFFIX,jetbrains.ai
+DOMAIN-SUFFIX,makersuite.google.com
+DOMAIN-SUFFIX,perplexity.ai
+
