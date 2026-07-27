@@ -2,8 +2,10 @@
 
 Self-hosted Surge / Surfboard RULE-SET lists.
 
-Upstream sources are merged daily by GitHub Actions (`Daily Sync Upstream`).
-Hand-tuned rules live in `owned/` (copied from private infra on publish).
+**Daily updates** run from private infra (`AS9929/vps-infra` → publish).
+This public repo keeps a manual **Daily Sync Upstream** fallback.
+
+Hand-tuned rules: `owned/` (synced on each publish).
 
 ## Subscribe
 
@@ -46,12 +48,6 @@ RULE-SET,https://raw.githubusercontent.com/AS9929/surge-rules/main/custom/direct
 ```
 
 jsDelivr: `https://cdn.jsdelivr.net/gh/AS9929/surge-rules@main/<path>`
-
-## Daily sync
-
-Workflow: `.github/workflows/daily-sync.yml` — every day 00:00 CST.
-
-Manual: Actions → **Daily Sync Upstream** → Run workflow.
 
 ## License
 

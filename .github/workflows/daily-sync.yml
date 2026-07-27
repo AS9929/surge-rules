@@ -1,12 +1,10 @@
-name: Daily Sync Upstream
+name: Daily Sync Upstream (fallback)
 
-# 跑在公开仓 AS9929/surge-rules：拉黑名单/AI 等上游，合并 owned，回写 *.list
-# 由私有仓 publish-rulesets.sh 同步本文件；勿只在公开仓改。
+# 公开仓备用：私有仓 AS9929/vps-infra 的 Sync Surge Rulesets 为每日主路径。
+# 仅保留手动触发，避免与私有仓定时任务双写冲突。
+# 本文件由 publish-rulesets.sh 从私有仓 configs/rulesets/daily-sync.workflow.yml 同步。
 
 on:
-  schedule:
-    # 每天 00:00 CST（UTC 16:00）
-    - cron: "0 16 * * *"
   workflow_dispatch:
 
 concurrency:
