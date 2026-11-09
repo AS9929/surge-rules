@@ -106,6 +106,9 @@ rulesets:
     policy_surfboard: AdBlock
     matching: pre-matching
     apply_denylist: false
+    # Claude 需要此服务。移除上游拒绝规则以避免抢先匹配。
+    skip_keywords:
+      - siftscience.com
     upstream:
       - https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/ruleset/reject.txt
 

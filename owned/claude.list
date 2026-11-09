@@ -6,7 +6,9 @@ PROCESS-NAME,Claude Helper
 
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.app
 DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claudemcpcontent.com
 DOMAIN-SUFFIX,claudeusercontent.com
 DOMAIN-SUFFIX,clau.de
 DOMAIN-SUFFIX,modelcontextprotocol.io
@@ -17,6 +19,18 @@ DOMAIN,cdn.usefathom.com
 DOMAIN,servd-anthropic-website.b-cdn.net
 
 DOMAIN-KEYWORD,anthropic
+
+# Claude 使用的第三方端点
+DOMAIN,api-iam.intercom.io
+DOMAIN,nexus-websocket-a.intercom.io
+DOMAIN,us5.datadoghq.com
+DOMAIN,r.stripe.com
+DOMAIN,us.sentry.io
+DOMAIN-SUFFIX,siftscience.com
+DOMAIN,fcmtoken.googleapis.com
+
+# 用户指定的目的地址段
+IP-CIDR,34.8.0.0/16,no-resolve
 
 # Anthropic AS399358
 IP-CIDR,160.79.104.0/21,no-resolve
