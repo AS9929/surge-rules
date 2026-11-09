@@ -15,3 +15,10 @@ DOMAIN-SUFFIX,together.ai
 DOMAIN-SUFFIX,together.xyz
 DOMAIN-SUFFIX,fireworks.ai
 DOMAIN-SUFFIX,huggingface.co
+
+# 经官网核对的 AI 服务
+DOMAIN-SUFFIX,dify.ai
+DOMAIN-SUFFIX,jasper.ai
+DOMAIN-SUFFIX,openart.ai
+DOMAIN-SUFFIX,clipdrop.co
+DOMAIN,gateway.ai.cloudflare.com

@@ -142,12 +142,25 @@ def read_owned(item: dict) -> list[str]:
     return parse_rules(path.read_text(encoding="utf-8"), denylist=[])
 
 
+def domain_key(rule: str) -> tuple[str, str]:
+    """读取规则的域名类型和目标，供上游规则集过滤使用。"""
+    kind, _, fields = rule.lower().partition(",")
+    return kind, fields.split(",", 1)[0].strip().rstrip(".")
+
+
 def merge_list(item: dict, cfg: dict, fetch: bool) -> Path:
     name = item["id"]
     rel = item_relpath(item)
     use_deny = bool(item.get("apply_denylist"))
     denylist = list(cfg.get("denylist") or []) if use_deny else []
     skip_kw = [k.lower() for k in (item.get("skip_keywords") or [])]
+    exceptions = [
+        domain_key(line)
+        for source in (item.get("skip_domains_from_owned") or [])
+        for line in read_owned({"id": source})
+    ]
+    skip_exact = {host for kind, host in exceptions if kind == "domain"}
+    skip_suffix = {host for kind, host in exceptions if kind == "domain-suffix"}
     owned = read_owned(item)
     generated: list[str] = []
     seen = {x.lower() for x in owned}
@@ -166,6 +179,13 @@ def merge_list(item: dict, cfg: dict, fetch: bool) -> Path:
                     continue
                 if skip_kw and any(k in key for k in skip_kw):
                     continue
+                if skip_exact or skip_suffix:
+                    kind, host = domain_key(key)
+                    if kind in {"domain", "domain-suffix"} and (
+                        host in skip_exact
+                        or any(host == suffix or host.endswith("." + suffix) for suffix in skip_suffix)
+                    ):
+                        continue
                 seen.add(key)
                 generated.append(line)
 

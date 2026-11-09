@@ -8,9 +8,6 @@ DOMAIN-SUFFIX,sgponte
 IP-ASN,4134,no-resolve
 # 微信 mmtls
 URL-REGEX,mmtls
-# Apple Maps / Store Online
-DOMAIN-SUFFIX,ls.apple.com
-DOMAIN-SUFFIX,store.apple.com
 # 常见下载器（macOS）
 PROCESS-NAME,aria2c
 PROCESS-NAME,Transmission

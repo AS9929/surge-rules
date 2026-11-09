@@ -36,8 +36,16 @@ footer:
     GEOIP,CN,DIRECT
     FINAL,Final
 
-# 顺序 = 匹配优先级。自定义规则必须在 reject/china/global 之前。
+# 顺序 = 匹配优先级。Apple 要先于通用直连 ASN；自定义规则先于 reject/china/global。
 rulesets:
+  - id: apple
+    comment: Apple
+    policy: Apple
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Apple/Apple.list
+
   # ---------- 原 conf 内联自定义（按策略拆分，成品在 custom/）----------
   - id: custom-direct
     path: custom/direct.list
@@ -110,6 +118,8 @@ rulesets:
     skip_keywords:
       - siftscience.com
       - r.openai.com
+    skip_domains_from_owned:
+      - apple
     upstream:
       - https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/ruleset/reject.txt
 
@@ -219,14 +229,6 @@ rulesets:
     apply_denylist: false
     upstream:
       - https://rawstatic.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bahamut.list
-
-  - id: apple
-    comment: Apple
-    policy: Apple
-    matching: extended-matching
-    apply_denylist: false
-    upstream:
-      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Apple/Apple.list
 
   - id: china
     comment: China DIRECT
