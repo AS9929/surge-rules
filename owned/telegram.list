@@ -1,0 +1,5 @@
+# OWNED — Telegram 官方网段中现有规则未显式覆盖的部分
+# 来源：https://core.telegram.org/resources/cidr.txt
+
+IP-CIDR,91.105.192.0/23,no-resolve
+IP-CIDR,185.76.151.0/24,no-resolve
