@@ -118,8 +118,12 @@ rulesets:
     skip_keywords:
       - siftscience.com
       - r.openai.com
+      - datadog
+      - sentry
+      - sift
     skip_domains_from_owned:
       - apple
+      - claude
     upstream:
       - https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/ruleset/reject.txt
 

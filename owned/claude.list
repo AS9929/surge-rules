@@ -8,6 +8,7 @@ DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,claude.app
 DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claudemcpclient.com
 DOMAIN-SUFFIX,claudemcpcontent.com
 DOMAIN-SUFFIX,claudeusercontent.com
 DOMAIN-SUFFIX,clau.de
@@ -21,6 +22,15 @@ DOMAIN,servd-anthropic-website.b-cdn.net
 DOMAIN-KEYWORD,anthropic
 
 # Claude 使用的第三方端点
+# 共享服务按用户要求统一走 Claude；浏览器访问其他应用的同类域名也会命中。
+DOMAIN-SUFFIX,sentry.io
+DOMAIN-SUFFIX,statsigapi.net
+DOMAIN-SUFFIX,intercom.io
+DOMAIN-SUFFIX,intercomcdn.com
+DOMAIN,browser-intake-us5-datadoghq.com
+DOMAIN-KEYWORD,datadog
+DOMAIN-KEYWORD,sentry
+DOMAIN-KEYWORD,sift
 DOMAIN,api-iam.intercom.io
 DOMAIN,nexus-websocket-a.intercom.io
 DOMAIN,us5.datadoghq.com
@@ -29,10 +39,15 @@ DOMAIN,us.sentry.io
 DOMAIN-SUFFIX,siftscience.com
 DOMAIN,fcmtoken.googleapis.com
 
+# 身份验证相关服务；maps 精确匹配，避免接管整个 googleapis.com。
+DOMAIN,maps.googleapis.com
+DOMAIN-SUFFIX,withpersona.com
+DOMAIN-SUFFIX,frompersona.com
+
 # 用户指定的目的地址段
 IP-CIDR,34.8.0.0/16,no-resolve
 
 # Anthropic AS399358
 IP-CIDR,160.79.104.0/21,no-resolve
-IP-CIDR6,2607:6bc0::/48,no-resolve
+IP-CIDR6,2607:6bc0::/32,no-resolve
 IP-ASN,399358,no-resolve
