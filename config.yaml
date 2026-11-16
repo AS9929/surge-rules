@@ -23,8 +23,9 @@ denylist:
 footer:
   surge: |
     IP-CIDR,0.0.0.0/32,REJECT,no-resolve
-    # Local Area Network & GeoIP China
-    OR,((RULE-SET,SYSTEM), (RULE-SET,LAN), (GEOIP,CN)),DIRECT
+    # 系统及局域网固定直连；国内公网流量服从 CN 选择。
+    OR,((RULE-SET,SYSTEM), (RULE-SET,LAN)),DIRECT
+    GEOIP,CN,CN
     FINAL,Final,dns-failed
   surfboard: |
     IP-CIDR,0.0.0.0/32,REJECT,no-resolve
@@ -33,7 +34,7 @@ footer:
     IP-CIDR,172.16.0.0/12,DIRECT
     IP-CIDR,127.0.0.0/8,DIRECT
     IP-CIDR,100.64.0.0/10,DIRECT
-    GEOIP,CN,DIRECT
+    GEOIP,CN,CN
     FINAL,Final
 
 # 顺序 = 匹配优先级。Apple 要先于通用直连 ASN；自定义规则先于 reject/china/global。
@@ -73,7 +74,15 @@ rulesets:
 
   - id: custom-reject
     path: custom/reject.list
-    comment: 自定义拒绝
+    comment: 自定义拒绝（由 AdBlock 控制）
+    policy: AdBlock
+    matching: extended-matching
+    apply_denylist: false
+    upstream: []
+
+  - id: custom-protocol-reject
+    path: custom/protocol-reject.list
+    comment: 特定域名 UDP 协议控制（保持既有拒绝）
     policy: REJECT
     matching: extended-matching
     apply_denylist: false
@@ -110,9 +119,10 @@ rulesets:
   # ---------- 原第三方 RULE-SET ----------
   - id: reject
     comment: AdBlock / reject
-    policy: REJECT
+    policy: AdBlock
     policy_surfboard: AdBlock
-    matching: pre-matching
+    # 策略组可切换为放行，不能使用固定 REJECT 的预匹配阶段。
+    matching: extended-matching
     apply_denylist: false
     # 保留 Claude 和 ChatGPT 端点的既有分流，避免被预匹配的拒绝规则覆盖。
     skip_keywords:
@@ -213,6 +223,25 @@ rulesets:
       - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list
       - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Copilot/Copilot.list
 
+  - id: speedtest
+    comment: Speedtest
+    policy: Speedtest
+    matching: extended-matching
+    apply_denylist: false
+    upstream_format: domainset
+    skip_keywords:
+      - 7h15.ru1353t.1s.m4d3.by.5ukk4w.skk.moe
+    upstream:
+      - https://ruleset.skk.moe/List/domainset/speedtest.conf
+
+  - id: discord
+    comment: Discord
+    policy: Discord
+    matching: extended-matching
+    apply_denylist: false
+    upstream:
+      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Discord/Discord.list
+
   - id: youtube
     comment: YouTube
     policy: Youtube
@@ -269,9 +298,45 @@ rulesets:
     upstream:
       - https://rawstatic.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bahamut.list
 
+  - id: github
+    comment: GitHub
+    policy: GitHub
+    matching: extended-matching
+    apply_denylist: false
+    skip_keywords:
+      - githubcopilot.com
+      - githubnext.com
+      - copilot
+    upstream:
+      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list
+
+  - id: google
+    comment: Google
+    policy: Google
+    matching: extended-matching
+    apply_denylist: false
+    skip_keywords:
+      - process-name,
+      - user-agent,
+      - ip-cidr
+      - ip-asn,
+    upstream:
+      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Google/Google.list
+
+  - id: microsoft
+    comment: Microsoft
+    policy: Microsoft
+    matching: extended-matching
+    apply_denylist: false
+    skip_keywords:
+      - 7h15.ru1353t.1s.m4d3.by.5ukk4w.skk.moe
+    upstream:
+      - https://ruleset.skk.moe/List/non_ip/microsoft.conf
+      - https://ruleset.skk.moe/List/non_ip/microsoft_cdn.conf
+
   - id: china
-    comment: China DIRECT
-    policy: DIRECT
+    comment: China（由 CN 控制）
+    policy: CN
     matching: extended-matching
     apply_denylist: false
     upstream:

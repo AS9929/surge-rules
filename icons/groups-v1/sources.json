@@ -73,5 +73,30 @@
     "url": null,
     "color": null,
     "license": "local-symbol"
+  },
+  "google": {
+    "url": "https://raw.githubusercontent.com/lobehub/lobe-icons/55746b0b082258211121c70bd26e6878fd3bd292/packages/static-svg/icons/google-color.svg",
+    "color": null,
+    "license": "MIT"
+  },
+  "microsoft": {
+    "url": "https://raw.githubusercontent.com/lobehub/lobe-icons/55746b0b082258211121c70bd26e6878fd3bd292/packages/static-svg/icons/microsoft-color.svg",
+    "color": null,
+    "license": "MIT"
+  },
+  "github": {
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/github.svg",
+    "color": "#24292F",
+    "license": "CC0-1.0"
+  },
+  "discord": {
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/discord.svg",
+    "color": "#5865F2",
+    "license": "CC0-1.0"
+  },
+  "speedtest": {
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/speedtest.svg",
+    "color": "#28304A",
+    "license": "CC0-1.0"
   }
 }
