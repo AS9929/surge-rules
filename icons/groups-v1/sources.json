@@ -68,5 +68,10 @@
     "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/telegram.svg",
     "color": "#209ED8",
     "license": "CC0-1.0"
+  },
+  "ai-general": {
+    "url": null,
+    "color": null,
+    "license": "local-symbol"
   }
 }
