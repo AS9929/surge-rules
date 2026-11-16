@@ -1,0 +1,72 @@
+{
+  "apple": {
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/apple.svg",
+    "color": "#263347",
+    "license": "CC0-1.0"
+  },
+  "claude": {
+    "url": "https://raw.githubusercontent.com/lobehub/lobe-icons/55746b0b082258211121c70bd26e6878fd3bd292/packages/static-svg/icons/claude-color.svg",
+    "color": null,
+    "license": "MIT"
+  },
+  "chatgpt": {
+    "url": "https://raw.githubusercontent.com/lobehub/lobe-icons/55746b0b082258211121c70bd26e6878fd3bd292/packages/static-svg/icons/openai.svg",
+    "color": "#10A37F",
+    "license": "MIT"
+  },
+  "gemini": {
+    "url": "https://raw.githubusercontent.com/lobehub/lobe-icons/55746b0b082258211121c70bd26e6878fd3bd292/packages/static-svg/icons/gemini-color.svg",
+    "color": null,
+    "license": "MIT"
+  },
+  "grok": {
+    "url": "https://raw.githubusercontent.com/lobehub/lobe-icons/55746b0b082258211121c70bd26e6878fd3bd292/packages/static-svg/icons/grok.svg",
+    "color": "#202938",
+    "license": "MIT"
+  },
+  "cursor": {
+    "url": "https://raw.githubusercontent.com/lobehub/lobe-icons/55746b0b082258211121c70bd26e6878fd3bd292/packages/static-svg/icons/cursor.svg",
+    "color": "#202938",
+    "license": "MIT"
+  },
+  "meta-ai": {
+    "url": "https://raw.githubusercontent.com/lobehub/lobe-icons/55746b0b082258211121c70bd26e6878fd3bd292/packages/static-svg/icons/meta-color.svg",
+    "color": null,
+    "license": "MIT"
+  },
+  "youtube": {
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/youtube.svg",
+    "color": "#F52236",
+    "license": "CC0-1.0"
+  },
+  "netflix": {
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/netflix.svg",
+    "color": "#E50914",
+    "license": "CC0-1.0"
+  },
+  "bahamut": {
+    "url": "https://www.svgrepo.com/download/514896/bahamut.svg",
+    "color": "#159EAA",
+    "license": "CC0-1.0"
+  },
+  "truthsocial": {
+    "url": null,
+    "color": "#6758F5",
+    "license": "local-symbol"
+  },
+  "whatsapp": {
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/whatsapp.svg",
+    "color": "#17B85C",
+    "license": "CC0-1.0"
+  },
+  "twitter": {
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/x.svg",
+    "color": "#202938",
+    "license": "CC0-1.0"
+  },
+  "telegram": {
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/telegram.svg",
+    "color": "#209ED8",
+    "license": "CC0-1.0"
+  }
+}
