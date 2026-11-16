@@ -1,16 +1,10 @@
 # OWNED — 手工维护，sync-rulesets 不会覆盖本文件
-# 其它 AI（走 Proxies 兜底组）；Perplexity 在 conf 里单独进「日本」
+# 其余 AI 统一进入「通用 AI · 服务」，默认跟随「AI · 节点」。
 
-DOMAIN-SUFFIX,cursor.com
-DOMAIN-SUFFIX,cursor.sh
-DOMAIN-SUFFIX,cursorapi.com
 DOMAIN-SUFFIX,groq.com
 DOMAIN-SUFFIX,openrouter.ai
-DOMAIN-SUFFIX,x.ai
-DOMAIN-SUFFIX,grok.com
 DOMAIN-SUFFIX,poe.com
 DOMAIN-SUFFIX,mistral.ai
-DOMAIN-SUFFIX,meta.ai
 DOMAIN-SUFFIX,together.ai
 DOMAIN-SUFFIX,together.xyz
 DOMAIN-SUFFIX,fireworks.ai
@@ -22,3 +16,19 @@ DOMAIN-SUFFIX,jasper.ai
 DOMAIN-SUFFIX,openart.ai
 DOMAIN-SUFFIX,clipdrop.co
 DOMAIN,gateway.ai.cloudflare.com
+
+# 来源：MetaCubeX category-ai-!cn；不纳入 GitHub、登录/CDN 等共享父域。
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,perplexity.com
+DOMAIN-SUFFIX,codeium.com
+DOMAIN-SUFFIX,codeiumdata.com
+DOMAIN-SUFFIX,windsurf.com
+DOMAIN-SUFFIX,windsurf.build
+DOMAIN-SUFFIX,midjourney.com
+DOMAIN-SUFFIX,elevenlabs.io
+DOMAIN-SUFFIX,elevenlabs.com
+DOMAIN-SUFFIX,manus.im
+DOMAIN-SUFFIX,manuscdn.com
+
+# 来源：Sukka AIGC Domains；仅匹配 Zed 的 AI 云端接口。
+DOMAIN,cloud.zed.dev

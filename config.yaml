@@ -145,7 +145,6 @@ rulesets:
     upstream:
       - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/OpenAI/OpenAI.list
       - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list
-      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Copilot/Copilot.list
 
   - id: gemini
     comment: Gemini
@@ -156,11 +155,40 @@ rulesets:
       - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Gemini/Gemini.list
       - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/BardAI/BardAI.list
 
-  - id: ai-misc
-    comment: 其它 AI 兜底
-    policy: Proxies
+  - id: grok
+    comment: Grok / xAI
+    policy: Grok
     matching: extended-matching
     apply_denylist: true
+    upstream: []
+
+  - id: cursor
+    comment: Cursor
+    policy: Cursor
+    matching: extended-matching
+    apply_denylist: true
+    upstream: []
+
+  - id: meta-ai
+    comment: Meta AI
+    policy: Meta AI
+    matching: extended-matching
+    apply_denylist: true
+    upstream: []
+
+  - id: ai-misc
+    comment: 通用 AI（其余 AI 服务）
+    policy: 通用 AI
+    matching: extended-matching
+    apply_denylist: true
+    # 独立服务优先；排除其自有域名，避免后续合并上游时重新混入。
+    skip_domains_from_owned:
+      - claude
+      - chatgpt
+      - gemini
+      - grok
+      - cursor
+      - meta-ai
     skip_keywords:
       - anthropic
       - claude
@@ -175,8 +203,15 @@ rulesets:
       - notebooklm
       - aistudio.google
       - deepmind
+      - ai.google.dev
+      - makersuite.google
+      # Copilot 上游含整段云厂商 ASN 和共享功能开关域，不能作为通用 AI 的范围。
+      - ip-asn,
+      - ip-cidr
+      - launchdarkly.com
     upstream:
       - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list
+      - https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Copilot/Copilot.list
 
   - id: youtube
     comment: YouTube

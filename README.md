@@ -30,3 +30,9 @@ Base: `https://raw.githubusercontent.com/AS9929/surge-rules/main/<path>`
 | `global.list` | `Global Proxy` | `Proxies` |
 
 jsDelivr: `https://cdn.jsdelivr.net/gh/AS9929/surge-rules@main/<path>`
+
+## AI service routing
+
+Separate lists: `claude.list`, `chatgpt.list`, `gemini.list`, `grok.list`, `cursor.list`, `meta-ai.list`.
+
+`ai-misc.list` covers the remaining AI services, including Copilot. Bind it to a dedicated general AI policy.

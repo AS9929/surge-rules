@@ -1,0 +1,4 @@
+# OWNED — Cursor 独立分流，保留既有客户端与 API 域名。
+DOMAIN-SUFFIX,cursor.com
+DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,cursorapi.com
