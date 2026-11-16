@@ -98,5 +98,19 @@
     "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/speedtest.svg",
     "color": "#28304A",
     "license": "CC0-1.0"
+  },
+  "adblock": {
+    "url": "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png",
+    "color": null,
+    "size": 22,
+    "license": "see upstream repository",
+    "note": "保留现用功能图标位图，离线嵌入 SVG；只统一圆形底片。"
+  },
+  "final": {
+    "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Final.png",
+    "color": null,
+    "size": 22,
+    "license": "see upstream repository",
+    "note": "保留现用功能图标位图，离线嵌入 SVG；只统一圆形底片。"
   }
 }
