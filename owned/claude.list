@@ -21,6 +21,19 @@ DOMAIN,servd-anthropic-website.b-cdn.net
 
 DOMAIN-KEYWORD,anthropic
 
+# one-exit 对照补充的服务及共享端点
+DOMAIN-KEYWORD,claude
+DOMAIN-KEYWORD,browser-intake
+DOMAIN-SUFFIX,growthbook.io
+DOMAIN-SUFFIX,usefathom.com
+DOMAIN-SUFFIX,hcaptcha.com
+DOMAIN-SUFFIX,stripe.com
+DOMAIN-SUFFIX,stripe.network
+DOMAIN-SUFFIX,stripecdn.com
+DOMAIN-SUFFIX,challenges.cloudflare.com
+DOMAIN-SUFFIX,segment.io
+DOMAIN-SUFFIX,recaptcha.net
+
 # Claude 使用的第三方端点
 # 共享服务按用户要求统一走 Claude；浏览器访问其他应用的同类域名也会命中。
 DOMAIN-SUFFIX,sentry.io
